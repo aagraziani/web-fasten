@@ -1,0 +1,65 @@
+<%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+
+
+    <div class="productAdd">
+
+        <form action="/products" method="POST" enctype="multipart/form-data">
+            <h2 class="tit">FORMULARIO DE CARGA DE PRODUCTO</h2>
+            <div>
+                <h3> Nombre del producto </h3>
+               <input type="nombre" class="<%= errors.name ? 'is-invalid' : '' %>" id="name" name="name" placeholder="Nombre" value="<%= body.name ? body.name : ''%>">
+               <div class="invalid-feedback"><%= errors.name ? errors.name.msg : ''%> </div>
+            </div>
+        
+            <div>
+                <h3>Nomenclatura del modelo</h3>
+                <input type="nomenclatura" class="<%= errors.modelo ? 'is-invalid' : '' %>" id="modelo" name="modelo" placeholder="Modelo" value="<%= body.modelo ? body.modelo : ''%>">
+                <div class="invalid-feedback"><%= errors.modelo ? errors.modelo.msg : ''%> </div>
+            </div>
+        
+            <div>
+                <h3>Precio</h3>
+                <input type="precio" class="<%= errors.price ? 'is-invalid' : '' %>" name="price" id="price" placeholder="Precio" value="<%= body.price ? body.price : ''%>">
+                <div class="invalid-feedback"><%= errors.price ? errors.price.msg : ''%> </div>
+            </div>
+        
+            <div>
+                <label for="Clasificación">Clasificación</label>
+                <select name="clasificacion">
+                    <option value="">-- Seleccionar --</option>
+                    <option value="1">Trabajos con tensión</option>
+                    <option value="2">Seguridad</option>
+                    <option value="3">Aparatos de testeo y medición</option>
+                </select>
+            </div>
+        
+            <div>
+                <h3>Descripción</h3>
+                <textarea name="description" id="description" class="<%= errors.description ? 'is-invalid' : '' %>" placeholder="Descripción" value="<%= body.description ? body.description : ''%>"></textarea>
+                <div class="invalid-feedback"><%= errors.description ? errors.description.msg : ''%> </div>   
+            </div>
+
+            <div>
+                <h3>Descripción breve</h3>
+                <textarea class="segunda" name="descriptionSeg" placeholder="Descripción breve"></textarea>    
+            </div>
+
+            <div>
+                <input type="file" name="foto">Agregar foto</button>
+                <div><%= errors.foto ? errors.foto.msg : ''%> </div>
+            </div>
+        
+            <div>
+                <button type="submit" class="publicar">Publicar</button>
+            </div>
+                       
+            
+        </form>
+    
+    </div>
+<%- include('./partials/footer') %>
+<script src="/js/create.js"></script>
+</body>
+</html>

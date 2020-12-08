@@ -1,0 +1,63 @@
+<%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+
+
+    <div class="productAdd">
+
+        <form  method="POST" action="/products/<%= products.id %>?_method=PUT" enctype="multipart/form-data">
+            <div>
+               <input type="nombre" class="<%= errors.name ? 'is-invalid' : '' %>" id="name" name="name" placeholder="Nombre" value="<%= products.name %>">
+               <div class="invalid-feedback"><%= errors.name ? errors.name.msg : ''%> </div>
+            </div>
+        
+            <div>
+                <input type="nomenclatura" name="modelo" placeholder="Modelo" value="<%= products.modelo %>">
+            </div>
+        
+            <div>
+                <input type="precio" name="price" placeholder="Precio" value="<%= products.price %>">
+            </div>
+        
+            <div>
+                <label for="Clasificación">Clasificación</label>
+                <select name="clasificacion">
+                
+                    <option value="">-- Seleccionar --</option>
+                    <option value="1">Trabajos con tensión</option>
+                    <option value="2">Seguridad</option>
+                    <option value="3">Aparatos de testeo y medición</option>
+                </select>
+            </div>
+        
+            <div>
+                <textarea name="description"  id="description" class="<%= errors.description ? 'is-invalid' : '' %>" placeholder="Descripción"><%= products.description %></textarea> 
+                <div class="invalid-feedback"><%= errors.description ? errors.description.msg : ''%> </div>   
+            </div>
+
+            <div>
+                <h3>Descripción breve</h3>
+                <textarea class="segunda" name="descriptionSeg" placeholder="Descripción breve">
+                    <%= products.descriptionSeg %>
+                </textarea>    
+            </div>
+
+            <div>
+                <div>
+                    <img src="/img/productos/<%=products.foto%>" class="img-fluid"  alt="">
+                </div>
+                <input type="file" name="foto" id="foto">Agregar foto</button>
+            </div>
+        
+            <div>
+                <button type="submit" class="publicar btn btn-primary">Publicar</button>
+            </div>                       
+            
+        </form>
+    
+    </div>
+    
+<%- include('./partials/footer') %>
+<script src="/js/edit.js"></script>
+</body>
+</html>
